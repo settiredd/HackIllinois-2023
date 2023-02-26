@@ -26,18 +26,18 @@ def real_time_price(stock_code):
             price = texts[0] 
             change = texts[1]
         else:
-            price = []
-            change = []
+            return 'NO'
     except ConnectionError:
-        price = []
-        change = []
-    return price, change
+        return 'NO'
+    return price + ',' + change
 
 stock = input("Enter a stock name: ")
-print(real_time_price(stock))
-#stock_info = real_time_price(stock)
-#info = stock_info.split(',')
-#dollar_change = info[0]
-#percent_change = info[1]
-#print("The dollar value has changed by: " + dollar_change)
-#print("The percent has changed by: " + percent_change)
+stock_info = real_time_price(stock)
+if stock_info == 'NO':
+    print('No changes in stock value or this stock does not exists')
+else:  
+    info = stock_info.split(',')
+    dollar_change = info[0]
+    percent_change = info[1]
+    print("The dollar value has changed by: " + dollar_change)
+    print("The percent has changed by: " + percent_change)
