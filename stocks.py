@@ -31,13 +31,13 @@ def real_time_price(stock_code):
     except ConnectionError:
         price = []
         change = []
-    return price + "," + change
-
+    return price, change
 
 stock = input("Enter a stock name: ")
-stock_info = real_time_price(stock)
-info = stock_info.split(',')
-dollar_change = info[0]
-percent_change = info[1]
-print("The dollar value has changed by: " + dollar_change)
-print("The percent has changed by: " + percent_change)
+print(real_time_price(stock))
+#stock_info = real_time_price(stock)
+#info = stock_info.split(',')
+#dollar_change = info[0]
+#percent_change = info[1]
+#print("The dollar value has changed by: " + dollar_change)
+#print("The percent has changed by: " + percent_change)
